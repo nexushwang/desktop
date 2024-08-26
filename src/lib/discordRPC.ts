@@ -11,19 +11,23 @@ export async function connectRPC() {
 
         rpc.on("ready", () =>
             rpc.setActivity({
-                state: "Nexus Cloud",
+                state: "revolt.chat",
                 details: "Chatting with others",
                 largeImageKey: "qr",
                 largeImageText: "Communication is critical – use Revolt.",
                 buttons: [
                     {
                         label: "Join Revolt",
-                        url: "https://staff.cloudserver.nexus",
+                        url: "https://app.revolt.chat/",
                     },
+<<<<<<< HEAD
                     {
                         label: "Website",
                         url: "https://staff.cloudserver.nexus",
                     },
+=======
+                    { label: "Website", url: "https://revolt.chat" },
+>>>>>>> parent of 69f3c97 (personalisation)
                 ],
             }),
         );

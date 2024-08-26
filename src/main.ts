@@ -241,12 +241,12 @@ function createWindow() {
     function buildMenu() {
         tray.setContextMenu(
             Menu.buildFromTemplate([
-                { label: "Revolt", type: "normal", enabled: false },
+                { label: "Nexus", type: "normal", enabled: false },
                 { label: "---", type: "separator" },
                 {
                     label: mainWindow.isVisible()
-                        ? "Hide Revolt"
-                        : "Show Revolt",
+                        ? "Hide Nexus Chat"
+                        : "Show Nexus Chat",
                     type: "normal",
                     click: function () {
                         if (mainWindow.isVisible()) {
@@ -257,7 +257,7 @@ function createWindow() {
                     },
                 },
                 {
-                    label: "Restart Revolt",
+                    label: "Restart Nexus Chat",
                     type: "normal",
                     click: function () {
                         app.shouldRelaunch = true;
@@ -265,7 +265,7 @@ function createWindow() {
                     },
                 },
                 {
-                    label: "Quit Revolt",
+                    label: "Quit Nexus Chat",
                     type: "normal",
                     click: function () {
                         app.shouldQuit = true;
@@ -277,7 +277,7 @@ function createWindow() {
     }
 
     buildMenu();
-    tray.setToolTip("Revolt");
+    tray.setToolTip("Nexus Chat");
     tray.setImage(trayIcon);
 }
 
