@@ -17,7 +17,7 @@ import { URL } from "node:url";
 import path from "node:path";
 
 import { firstRun, getConfig, store, onStart, getBuildURL } from "./lib/config";
-import { connectRPC, dropRPC } from "./lib/discordRPC";
+//import { connectRPC, dropRPC } from "./lib/discordRPC";
 import { autoLaunch } from "./lib/autoLaunch";
 import { autoUpdate } from "./lib/updater";
 
@@ -71,9 +71,9 @@ function createWindow() {
             preload: path.resolve(App.getAppPath(), "bundle", "app.js"),
             contextIsolation: true,
             nodeIntegration: false,
-	    //spellcheck needs to be set to true to initilze values
-	    //if set to false toggle won't work properly
-	    spellcheck: true,
+            //spellcheck needs to be set to true to initilze values
+            //if set to false toggle won't work properly
+            spellcheck: true,
         },
 
         x: mainWindowState.x,
@@ -87,17 +87,18 @@ function createWindow() {
         minHeight: 300,
     });
     //sets value to whatever the previous state was defualt is same as webPref
-    mainWindow.webContents.session.setSpellCheckerEnabled(store.get("spellcheck",true));
+    mainWindow.webContents.session.setSpellCheckerEnabled(
+        store.get("spellcheck", true),
+    );
 
     if (process.platform === "win32") {
         App.setAppUserModelId(mainWindow.title);
     }
 
     mainWindowState.manage(mainWindow);
-    if (app.commandLine.hasSwitch('server')) {
-        mainWindow.loadURL(app.commandLine.getSwitchValue('server'));
-    }
-    else {
+    if (app.commandLine.hasSwitch("server")) {
+        mainWindow.loadURL(app.commandLine.getSwitchValue("server"));
+    } else {
         mainWindow.loadURL(getBuildURL());
     }
 
@@ -163,18 +164,20 @@ function createWindow() {
                 }),
             );
         }
-	menu.append(
-		new MenuItem({
-			label: "Toggle spellcheck",
-			click: ()=>{
-				//to improve readability, stores current state of spell check
-	 			let isSpellcheck = store.get("spellcheck",true);
-				mainWindow.webContents.session.setSpellCheckerEnabled(!isSpellcheck);
-				//stores spellcheck state locally to presist between session
-				store.set("spellcheck",!isSpellcheck);
-			},
-		}),
-	);
+        menu.append(
+            new MenuItem({
+                label: "Toggle spellcheck",
+                click: () => {
+                    //to improve readability, stores current state of spell check
+                    let isSpellcheck = store.get("spellcheck", true);
+                    mainWindow.webContents.session.setSpellCheckerEnabled(
+                        !isSpellcheck,
+                    );
+                    //stores spellcheck state locally to presist between session
+                    store.set("spellcheck", !isSpellcheck);
+                },
+            }),
+        );
         if (menu.items.length > 0) {
             menu.popup();
         }
@@ -200,13 +203,14 @@ function createWindow() {
     });
 
     ipcMain.on("set", (_, arg: Partial<ConfigData>) => {
-        if (typeof arg.discordRPC !== "undefined") {
-            if (arg.discordRPC) {
-                connectRPC();
-            } else {
-                dropRPC();
-            }
-        }
+        // Commenting out the discordRPC related logic
+        // if (typeof arg.discordRPC !== "undefined") {
+        //     if (arg.discordRPC) {
+        //         connectRPC();
+        //     } else {
+        //         dropRPC();
+        //     }
+        // }
 
         store.set("config", {
             ...store.get("config"),

@@ -3,7 +3,6 @@ import { getConfig } from "./config";
 
 export var rpc: Client;
 
-/*
 export async function connectRPC() {
     if (!getConfig().discordRPC) return;
 
@@ -21,7 +20,10 @@ export async function connectRPC() {
                         label: "Join Revolt",
                         url: "https://staff.cloudserver.nexus",
                     },
-                    { label: "Website", url: "https://staff.cloudserver.nexus" },
+                    {
+                        label: "Website",
+                        url: "https://staff.cloudserver.nexus",
+                    },
                 ],
             }),
         );
@@ -33,7 +35,7 @@ export async function connectRPC() {
     } catch (err) {
         reconnect();
     }
-}*/
+}
 
 const reconnect = () => setTimeout(() => connectRPC(), 1e4);
 

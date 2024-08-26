@@ -1,7 +1,7 @@
 import type { ConfigData } from "../app";
 
 import { autoLaunch } from "./autoLaunch";
-import { connectRPC } from "./discordRPC";
+//import { connectRPC } from "./discordRPC";
 import Store from "electron-store";
 import { app } from "electron";
 
@@ -40,9 +40,10 @@ export function onStart() {
         app.disableHardwareAcceleration();
     }
 
-    if (config.discordRPC) {
-        connectRPC();
-    }
+    // Commenting out the discordRPC related logic
+    // if (config.discordRPC) {
+    //     connectRPC();
+    // }
 }
 
 export function getBuildURL() {
