@@ -3,6 +3,7 @@ import { getConfig } from "./config";
 
 export var rpc: Client;
 
+/*
 export async function connectRPC() {
     if (!getConfig().discordRPC) return;
 
@@ -11,16 +12,16 @@ export async function connectRPC() {
 
         rpc.on("ready", () =>
             rpc.setActivity({
-                state: "revolt.chat",
+                state: "Nexus Cloud",
                 details: "Chatting with others",
                 largeImageKey: "qr",
                 largeImageText: "Communication is critical – use Revolt.",
                 buttons: [
                     {
                         label: "Join Revolt",
-                        url: "https://app.revolt.chat/",
+                        url: "https://staff.cloudserver.nexus",
                     },
-                    { label: "Website", url: "https://revolt.chat" },
+                    { label: "Website", url: "https://staff.cloudserver.nexus" },
                 ],
             }),
         );
@@ -32,7 +33,7 @@ export async function connectRPC() {
     } catch (err) {
         reconnect();
     }
-}
+}*/
 
 const reconnect = () => setTimeout(() => connectRPC(), 1e4);
 
