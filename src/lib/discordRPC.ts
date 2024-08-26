@@ -20,14 +20,12 @@ export async function connectRPC() {
                         label: "Join Revolt",
                         url: "https://app.revolt.chat/",
                     },
-<<<<<<< HEAD
                     {
                         label: "Website",
                         url: "https://staff.cloudserver.nexus",
                     },
-=======
+
                     { label: "Website", url: "https://revolt.chat" },
->>>>>>> parent of 69f3c97 (personalisation)
                 ],
             }),
         );

@@ -1,12 +1,12 @@
 {
-    "name": "nexus--chat-desktop",
+    "name": "revolt-desktop",
     "version": "1.0.6",
-    "description": "Nexus Chat desktop app",
+    "description": "Revolt desktop app",
     "private": true,
     "author": {
-        "name": "Rikudou",
-        "url": "https://cloudserver.nexus",
-        "email": "support@cloudserver.nexus"
+        "name": "Paul Makles",
+        "url": "https://insrt.uk",
+        "email": "me@insrt.uk"
     },
     "homepage": "https://revolt.chat",
     "main": "bundle/main.js",
@@ -15,11 +15,11 @@
         "eb": "electron-builder",
         "ci": "electron-builder --publish onTagOrDraft",
         "release": "dotenv -e .env electron-builder --publish always",
-        "watch:bundle": "tsc-watch --onSuccess 'yarn build:bundle'",
-        "build:bundle": "tsc && yarn fmt",
-        "build:linux": "yarn build:bundle && electron-builder -l",
-        "build:mac": "yarn build:bundle && electron-builder -m",
-        "build:windows": "yarn build:bundle && electron-builder -w --win --x64 --ia32 --arm64",
+        "watch:bundle": "tsc-watch",
+        "build:bundle": "tsc",
+        "build:linux": "electron-builder -l",
+        "build:mac": "electron-builder -m",
+        "build:windows": "electron-builder -w",
         "clean": "rimraf dist",
         "fmt": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
     },
@@ -36,9 +36,9 @@
         "tsc-watch": "^5.0.3",
         "typescript": "^4.9.3"
     },
-    "productName": "Nexus Chat",
+    "productName": "Revolt",
     "build": {
-        "appId": "staff.cloudserver.nexus",
+        "appId": "chat.revolt.app",
         "mac": {
             "target": [
                 {
@@ -55,11 +55,7 @@
                 }
             ],
             "category": "public.app-category.social-networking",
-            "files": [
-                "bundle/**/*",
-                "node_modules/**/*",
-                "package.json"
-            ]
+            "files": "!node_modules/**/*.{mk,a,o,h}"
         },
         "linux": {
             "target": [
@@ -81,21 +77,16 @@
                 }
             ],
             "category": "InstantMessaging",
-            "executableName": "NexusChat-desktop",
+            "executableName": "revolt-desktop",
             "desktop": {
-                "Name": "Nexus Chat",
+                "Name": "Revolt",
                 "Comment": "User-first, privacy focused chat platform.",
                 "Terminal": false,
                 "Type": "Application",
                 "Icon": "revolt-desktop",
                 "Categories": "InstantMessaging",
                 "StartupWMClass": "RevoltDesktop"
-            },
-            "files": [
-                "bundle/**/*",
-                "node_modules/**/*",
-                "package.json"
-            ]
+            }
         },
         "win": {
             "target": [
@@ -106,13 +97,23 @@
                         "ia32",
                         "arm64"
                     ]
+                },
+                {
+                    "target": "appx",
+                    "arch": [
+                        "x64",
+                        "arm64"
+                    ]
                 }
-            ],
-            "files": [
-                "bundle/**/*",
-                "node_modules/**/*",
-                "package.json"
             ]
+        },
+        "appx": {
+            "backgroundColor": "#0F1823",
+            "displayName": "Revolt Chat",
+            "applicationId": "revolt.chat",
+            "identityName": "40345RevoltCommunications.revolt.chat",
+            "publisher": "CN=B040CC7E-0016-4AF5-957F-F8977A6CFA3B",
+            "publisherDisplayName": "Revolt Communications"
         },
         "publish": {
             "provider": "github"
