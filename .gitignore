@@ -13,3 +13,4 @@ package/*/*.zst
 .yarn/cache
 
 .DS_Store
+*.rar
